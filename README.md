@@ -1,2 +1,2 @@
 # Reed-Koa-Websocket
-Routable Websocket Wrapper for KOA
+Routable Websocket Wrapper for KOA (ES6+)

@@ -1,0 +1,35 @@
+{
+  "name": "@reed/koa-websocket",
+  "version": "1.0.0",
+  "description": "routable websocket wrapper for koa (ES6+)",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/HansHuang/Reed-Koa-Websocket.git"
+  },
+  "keywords": [
+    "reed",
+    "koa",
+    "websocket",
+    "ws"
+  ],
+  "author": "HansHuang",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/HansHuang/Reed-Koa-Websocket/issues"
+  },
+  "homepage": "https://github.com/HansHuang/Reed-Koa-Websocket#readme",
+  "dependencies": {
+    "debug": "^4.1.1",
+    "koa-compose": "^4.1.0",
+    "ws": "^7.1.2"
+  },
+  "devDependencies": {
+    "koa": "^2.10.0",
+    "koa-router": "^7.4.0",
+    "mocha": "^6.2.1"
+  }
+}
