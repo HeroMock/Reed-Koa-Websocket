@@ -1,9 +1,10 @@
-import * as ws from 'ws'
-import debug from 'debug'
 
-const log = debug('Websocket')
+const ws = require('ws'),
+    compose = require('koa-compose'),
+    url = require('url'),
+    log = require('debug')('Websocket')
 
-export default class KoaWs {
+module.exports = class KoaWs {
     constructor(app, wsOptions) {
         this.app = app
 
