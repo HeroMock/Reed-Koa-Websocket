@@ -1,6 +1,6 @@
 {
   "name": "reed-koa-websocket",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "routable websocket wrapper for koa (ES6+)",
   "main": "index.js",
   "scripts": {
