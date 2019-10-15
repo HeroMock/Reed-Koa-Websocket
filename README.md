@@ -14,12 +14,13 @@ app.ws = new KoaWs(app)
 
 const router = new Router()
 router.all('/channel/:name', ctx => {
+    let client = ctx.websocket
 
-    ctx.websocket.send(`Hello ${ctx.params.name}`)
+    client.send(`Hello ${ctx.params.name}`)
 
-    ctx.websocket.on('message', msg => {
+    client.on('message', msg => {
         // echo back
-        ctx.websocket.send(JSON.stringify({
+        client.send(JSON.stringify({
             params: { ...ctx.params },
             query: { ...ctx.query },
             msg
@@ -37,10 +38,13 @@ app.listen(8080)
 
 ## Class: KoaWs
 
-__constructor(app[, wsOptions])__
+* __constructor(app[, wsOptions])__
 
-`app`: KOA Application
+  `app`: KOA Application
 
-`wsOptions`: [optional] construction options for [ws](https://github.com/websockets/ws/blob/master/doc/ws.md#new-websocketaddress-protocols-options)
+  `wsOptions`: [optional] construction options for [ws](https://github.com/websockets/ws/blob/master/doc/ws.md#new-websocketaddress-protocols-options)
 
 
+* __use(middleware)__
+
+  `middleware`: koa middleware
