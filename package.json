@@ -1,6 +1,6 @@
 {
   "name": "reed-koa-websocket",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "routable websocket wrapper for koa (ES6+)",
   "main": "index.js",
   "scripts": {
@@ -23,13 +23,13 @@
   },
   "homepage": "https://github.com/HansHuang/Reed-Koa-Websocket#readme",
   "dependencies": {
-    "debug": "^4.1.1",
+    "debug": "^4.4.0",
     "koa-compose": "^4.1.0",
-    "ws": "^7.1.2"
+    "ws": "^8.18.1"
   },
   "devDependencies": {
-    "koa": "^2.10.0",
-    "koa-router": "^7.4.0",
-    "mocha": "^6.2.1"
+    "koa": "^2.16.0",
+    "koa-router": "^13.0.1",
+    "mocha": "^11.1.0"
   }
 }

@@ -1,5 +1,5 @@
 const assert = require('assert'),
-    WS = require('ws'),
+    { WebSocket } = require('ws'),
     Koa = require('koa'),
     Router = require('koa-router'),
     KoaWs = require('../index')
@@ -17,7 +17,7 @@ describe('reed-koa-websocket test', () => {
             ctx.websocket.send(JSON.stringify({
                 params: { ...ctx.params },
                 query: { ...ctx.query },
-                msg
+                msg: msg.toString()
             }))
         })
     })
@@ -32,10 +32,10 @@ describe('reed-koa-websocket test', () => {
     })
 
     it('echo msg', done => {
-        const client = new WS(`ws://localhost:${server.address().port}/echo`)
+        const client = new WebSocket(`ws://localhost:${server.address().port}/echo`)
 
         client.on('message', msg => {
-            assert.strictEqual(msg, 'hello')
+            assert.strictEqual(msg.toString(), 'hello')
             done()
             client.close()
         })
@@ -44,10 +44,11 @@ describe('reed-koa-websocket test', () => {
     })
 
     it('echo msg 2', done => {
-        const client = new WS(`ws://localhost:${server.address().port}/channel/hans?foo=bar`)
+        const client = new WebSocket(`ws://localhost:${server.address().port}/channel/hans?foo=bar`)
 
         client.on('message', msg => {
-            let data = JSON.parse(msg)
+            
+            let data = JSON.parse(msg.toString())
 
             assert.strictEqual(data.params.name, 'hans')
             assert.strictEqual(data.query.foo, 'bar')

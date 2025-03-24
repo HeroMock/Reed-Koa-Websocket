@@ -1,7 +1,6 @@
 
-const ws = require('ws'),
+const { WebSocketServer } = require('ws'),
     compose = require('koa-compose'),
-    url = require('url'),
     log = require('debug')('Websocket')
 
 module.exports = class KoaWs {
@@ -10,7 +9,7 @@ module.exports = class KoaWs {
 
         this.middleware = []
 
-        this.wsServer = new ws.Server({ ...wsOptions, noServer: true });
+        this.wsServer = new WebSocketServer({ ...wsOptions, noServer: true });
         this.wsServer.on('connection', (...s) => this._onConnection(...s))
 
         this._wrapListen(app)
@@ -47,9 +46,8 @@ module.exports = class KoaWs {
 
         const fn = compose(this.middleware),
             context = this.app.createContext(request)
-
         context.websocket = socket;
-        context.path = url.parse(request.url).pathname
+        context.path = new URL(request.url, `ws://${request.headers.host}`).pathname
 
         fn(context)
             .catch(e => log(`Middleware Chain Error: ${e.message}`))
